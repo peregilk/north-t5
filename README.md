@@ -36,10 +36,12 @@ The models are trained using the T5X library, and the original checkpoints are a
 I will continue to train and release additional models based on this framework. Contact me directly if you need other specific version for research projects.
 
 ## Contact/About
-These models were trained by Per E Kummervold. Please contact me on per@capia.no
+These models were trained by Per E Kummervold. Please contact me on per@capia.no.
 
 ## Thanks
-This release would not have been possible without getting support from Google's TRC - TPU Research Cloud. 
-
+This release would not have been possible without getting support from [TPU Research Cloud](https://sites.research.google/trc/about/) at Google Research. 
+NB
+NCC
+Freddy
 
 
