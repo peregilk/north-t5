@@ -31,10 +31,10 @@ While the huge models almost always will give the best results, they are also bo
 All models were trained on TPUs. The largest XXL model was trained on a TPU v4-64, the XL model on a TPU v4-16, and the rest on TPU v4-8.
 
 ## Formats
-The models are trained using the T5X library, and the original checkpoints are available. The T5X library is also well suited for doing additional finetuning or interference. The models is also converted to Transformers/HuggingFace. In this framework, the models are available both in Flax, PyTorch and TensorFlow format.
+The models are trained using the T5X library. The original checkpoints are available in T5X format and can be used for both finetuning or interference. The models is also converted to Transformers/HuggingFace. In this framework, the models are available both in Flax, PyTorch and TensorFlow format.
 
 ## Future
-I will continue to train and release additional models based on this framework. Contact me directly if you need other specific version for research projects.
+I will continue to train and release additional models to this set. What models that are added is dependent upon the feedback. 
 
 ## Contact/About
 These models were trained by Per E Kummervold. Please contact me on per@capia.no.
