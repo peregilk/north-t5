@@ -13,7 +13,7 @@
   "initializer_factor": 1.0,
   "is_encoder_decoder": true,
   "layer_norm_epsilon": 1e-06,
-  "model_type": "t5",
+  "model_type": "mt5",
   "num_decoder_layers": 12,
   "num_heads": 12,
   "num_layers": 12,
