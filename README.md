@@ -12,7 +12,7 @@ The North-T5 is a set of Norwegian sequence-to-sequence-models. It builds upon t
 |North-T5-xxl|11 billion| N/A | GCloud Bucket |
 
 ## Performance
-A thorough evaluation of the North-T5 models is planned. I strongly recommend any external researchers to make their own evaluation. The main advantage with the T5-models are their flexibility, and that they can be adapted to nearly any task. Traditionally, encoder-only models (like BERT) excels in classification tasks, while seq-2-seq models are easier to train for tasks like translation and Q&A. Despite this, here are the results from using North-T5 on the political classification task explained [here](https://arxiv.org/abs/2104.09617). 
+A thorough evaluation of the North-T5 models is planned. I strongly recommend any external researchers to make their own evaluation. The main advantage with the T5-models are their flexibility. Traditionally, encoder-only models (like BERT) excels in classification tasks, while seq-2-seq models are easier to train for tasks like translation and Q&A. Despite this, here are the results from using North-T5 on the political classification task explained [here](https://arxiv.org/abs/2104.09617). 
 
 |**Model:** | **F1** |
 |:-----------|:------------|
@@ -38,9 +38,17 @@ For making it possible to run experiments on the T5-models, a range of sub-versi
 |North-T5-base-modern | Pretrained for an additional 200k steps on a blanaced Bokmål and Nynorsk corpus. While original made for doing translation between Bokmål and Nynorsk, it might also give improved results on tasks where you know that the input/output is modern "standard" text. A significant part of the training corpus is newspapers and reports.|
 |North-T5-base-scandinavian |Pretrained for an additional 200k steps on a corpus with the Scandinavian languages (Bokmål, Nynorsk, Danish, Swedish and Icelandic (+ a tiny bit Faeroyish)). The model was trained for increasing the understanding of what effect such training has on various languages.|
 
+## Fine-tuned versions
+As explained below, the model really needs to be fine-tuned for specific tasks. This procedure is simple, and the model is not very sensitive to the hyper-parameters used. Usually a decent result can be obtained by using a fixed learning rate of 1e-3. Smaller versions of the model typically needs to be trained for a longer time. It is easy to train the base-models in a Google Colab. I will provide an exampel Notebook on this soon.
+
+Since some people really want to see what the models are capable of, without going through the training procedure, I provide a couple of test models. These models are by no means optimised, and are just for demonstrating how the North-T5 models can be used.
+
+* Nynorsk Translator. Translates any text from Norwegian Bokmål to Norwegian Nynorsk.
+* De-Uncaser. Puts punctation, spaces and capital letters back into the text. The input needs to be in Norwegian but does not have to be divided into sentences or have proper capitalisation of words. You can even remove the spaces from the text, and make the model reconstruct it.
+
 
 ## Training details
-he models are built using the Flax-based T5X codebase, and all models are initiated with the mT5 pretrained weights. The models are trained using the T5.1.1 training regime, where they are only trained on an unsupervised masking-task. This also means that the models (contrary to the original T5) needs to be finetuned to solve specific tasks. This finetuning is however usually not very compute intensive, and in most cases it can be performed even with free online training resources.
+The models are built using the Flax-based T5X codebase, and all models are initiated with the mT5 pretrained weights. The models are trained using the T5.1.1 training regime, where they are only trained on an unsupervised masking-task. This also means that the models (contrary to the original T5) needs to be finetuned to solve specific tasks. This finetuning is however usually not very compute intensive, and in most cases it can be performed even with free online training resources.
 
 All the main model model versions are trained for 500.000 steps after the mT5 checkpoint (1.000.000 steps). They are all trained mainly on a 75GB corpus, consisting of NCC, Common Crawl and some additional high quality English text (Wikipedia). The corpus is roughly 80% Norwegian text. Additional languages are added to retain some of the multilingual capabilities, making the model both more robust to new words/concepts and also more suited as a basis for translation tasks.
 
