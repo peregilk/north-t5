@@ -26,10 +26,10 @@ A thorough evaluation of the North-T5 models is planned. I strongly recommend an
 |North-T5-xl|88.7 |
 |North-T5-xxl|91.8|
 
-This is preliminary results. The results from the BERT-models are from REF and are based on the test-results from the best model after 10 runs with early stopping and a decaying learning rate. The T5-results are the average of 5 runs on the evaluation set. The small-model was trained for 10.000 steps, while the rest for 5.000 steps. A fixed learning rate was used (no decay), and no early stopping. Neither was the recommended rank classification used. We use a max sequence length of 512. This method simplifies the test setup and gives results that are easy to interpret. However, the results from the T5 model might actually be a bit sub-optimal.  
+This is preliminary results. The [results](https://arxiv.org/abs/2104.09617) from the BERT-models are based on the test-results from the best model after 10 runs with early stopping and a decaying learning rate. The T5-results are the average of five runs on the evaluation set. The small-model was trained for 10.000 steps, while the rest for 5.000 steps. A fixed learning rate was used (no decay), and no early stopping. Neither was the recommended rank classification used. We use a max sequence length of 512. This method simplifies the test setup and gives results that are easy to interpret. However, the results from the T5 model might actually be a bit sub-optimal.  
 
 ## Sub-versions of North-T5-Base
-For making it easier to run experiments on the T5-models, a range of sub-versions are released. These models are currently only available as base-models. However, other model sizes can be made available by request.
+For making it possible to run experiments on the T5-models, a range of sub-versions are released. These models are currently only available as base-models. However, other model sizes can be made available by request.
 
 |**Model:** | **Description** |
 |:-----------|:------------|
@@ -59,7 +59,7 @@ This release would not have been possible without getting support from [TPU Rese
 
 Freddy Wetjen at the National Library of Norway has been of tremendous help in generating the original NCC corpus, and has also contributed to generate the collated coprus used for this training. In addition he has been a dicussion partner in the creation of these models. 
 
-Also thanks to Stefan XXXX for writing the script used for converting these models from T5X to HuggingFace and to Javer de la Rosa for writing the dataloader for reading the HuggingFace Datasets in T5.
+Also thanks to Stefan Schweter for writing the [script](https://github.com/huggingface/transformers/blob/main/src/transformers/models/t5/convert_t5x_checkpoint_to_flax.py)  for converting these models from T5X to HuggingFace and to Javier de la Rosa for writing the dataloader for reading the HuggingFace Datasets in T5X.
 
 ## Warranty
 Use at your own risk. The models have not yet been thougroughly tested, and may contain both errors and biases.
