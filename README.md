@@ -12,7 +12,7 @@ The North-T5 is a set of Norwegian sequence-to-sequence-models. It builds upon t
 |North-T5-xxl|11 billion| N/A | GCloud Bucket |
 
 ## Performance
-A thorough evaluation of the North-T5 models is planned. I strongly recommend any external researchers to make their own evaluation. The main advantage with the T5-models are their flexibility, and that they can be adapted to nearly any task. Traditionally, encoder-only models (like BERT) excels in classification tasks, while seq-2-seq models are easier to train for tasks like translation or Q&A. Despite this, we here provide the results of using North-T5 on the political classification task explained in REF. 
+A thorough evaluation of the North-T5 models is planned. I strongly recommend any external researchers to make their own evaluation. The main advantage with the T5-models are their flexibility, and that they can be adapted to nearly any task. Traditionally, encoder-only models (like BERT) excels in classification tasks, while seq-2-seq models are easier to train for tasks like translation or Q&A. Despite this, here is the results from using North-T5 on the political classification task explained in REF. 
 
 |**Model:** | **F1** |
 |:-----------|:------------|
