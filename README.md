@@ -2,37 +2,34 @@
 The North-T5 is a set of Norwegian sequence-to-sequence-models. It builds upon the flexible T5 text-to-text platform and can be used for a variety of NLP tasks ranging from classification to translation.
 
 
-## Main versions
-|**Model:** | **Parameters** |
-|:-----------|:------------|
-|North-T5-small|60 million |
-|North-T5-base|220 million |
-|North-T5-large|770 million |
-|North-T5-xl|3 billion |
-|North-T5-xxl|11 billion|
+## Main versions - download
+|**Model:** | **Parameters** |**Transformers** |**T5X** |
+|:-----------|:------------|:------------|:------------|
+|North-T5-small|60 million | HuggingFace | GCloud Bucket |
+|North-T5-base|220 million | HuggingFace | GCloud Bucket |
+|North-T5-large|770 million | HuggingFace | GCloud Bucket |
+|North-T5-xl|3 billion | HuggingFace | GCloud Bucket |
+|North-T5-xxl|11 billion| N/A | GCloud Bucket |
 
 ## Performance
-A thorough evaluation of the North-T5 models is planned. I strongly recommend any external researchers to make their own evaluation. The main advantage with the T5-models are their flexibility, and that they can be adapted to nearly any task. Traditionally, encoder-only models (like BERT) excels in classification tasks, while seq-2-seq models is easier to train for instance for translation or Q&A. Despite this, we here provide the results of using North-T5 on the political classification task explained in REF. 
+A thorough evaluation of the North-T5 models is planned. I strongly recommend any external researchers to make their own evaluation. The main advantage with the T5-models are their flexibility, and that they can be adapted to nearly any task. Traditionally, encoder-only models (like BERT) excels in classification tasks, while seq-2-seq models are easier to train for tasks like translation or Q&A. Despite this, we here provide the results of using North-T5 on the political classification task explained in REF. 
 
-## Main versions
 |**Model:** | **F1** |
 |:-----------|:------------|
-|mBERT-base|60 million |
-|NorBERT-base|60 million |
-|nb-bert-base|60 million |
-|mT5-small|60 million |
-|North-T5-small|220 million |
-|North-T5-base|220 million |
-|North-T5-large|770 million |
-|North-T5-xl|3 billion |
-|North-T5-xxl|11 billion|
+|mT5-base|73.2 |
+|mBERT-base|78.4 |
+|NorBERT-base|78.2 |
+|North-T5-small|80.5 |
+|nb-bert-base|81.8 |
+|North-T5-base|85.3 |
+|North-T5-large|86.7 |
+|North-T5-xl|88.7 |
+|North-T5-xxl|91.8|
 
-This is all preliminary numbers. The results from the BERT-models are from REF and is from the test-results from the best model after 10 runs with early stopping and decaying learning rate. The T5-results are the average of 5 runs on the evaluation set. The small-model was trained for 10.000 steps, while the rest for 5.000 steps. A fixed learning rate was used (no decay), and no early stopping. Neither was the recommended rank classification used. This method simplifies the test setup and gived results that are easy to interpret. However, they might be a bit sub-optimal.  
-
-
+This is preliminary results. The results from the BERT-models are from REF and are based on the test-results from the best model after 10 runs with early stopping and a decaying learning rate. The T5-results are the average of 5 runs on the evaluation set. The small-model was trained for 10.000 steps, while the rest for 5.000 steps. A fixed learning rate was used (no decay), and no early stopping. Neither was the recommended rank classification used. We use a max sequence length of 512. This method simplifies the test setup and gives results that are easy to interpret. However, the results from the T5 model might actually be a bit sub-optimal.  
 
 ## Sub-versions of North-T5-Base
-For making it easier to run experiments on the T5-models, a range of sub-versions are released. These models are currently only available as base-models. However, other models can be made available by request.
+For making it easier to run experiments on the T5-models, a range of sub-versions are released. These models are currently only available as base-models. However, other model sizes can be made available by request.
 
 |**Model:** | **Description** |
 |:-----------|:------------|
