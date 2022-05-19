@@ -46,21 +46,23 @@ All the main model model versions are trained for 500.000 steps after the mT5 ch
 
 While the huge models almost always will give the best results, they are also both difficult and expensive to finetune. It is strongly recommended to start with finetuning on a base-models. This can typically easily be finetuned on a standard graphic card or a free TPU through Google Colab. The sub-versions of the North-T5-base model was created with this in mind. 
 
-All models were trained on TPUs. The largest XXL model was trained on a TPU v4-64, the XL model on a TPU v4-16, and the rest on TPU v4-8.
+All models were trained on TPUs. The largest XXL model was trained on a TPU v4-64, the XL model on a TPU v4-32, the Large model on a TPU v4-16 and the rest on TPU v4-8.
 
 ## Formats
-The models are trained using the T5X library. The original checkpoints are available in T5X format and can be used for both finetuning or interference. The models is also converted to Transformers/HuggingFace. In this framework, the models are available both in Flax, PyTorch and TensorFlow format.
+All models are trained using the Flax-based T5X library. The original checkpoints are available in T5X format and can be used for both finetuning or interference. All models, except the XXL-model, are also converted to Transformers/HuggingFace. In this framework, the models are available both in Flax, PyTorch and TensorFlow format.
 
 ## Future
 I will continue to train and release additional models to this set. What models that are added is dependent upon the feedback. 
 
-## Contact/About
-These models were trained by Per E Kummervold. Please contact me on per@capia.no.
-
 ## Thanks
 This release would not have been possible without getting support from [TPU Research Cloud](https://sites.research.google/trc/about/) at Google Research. 
-NB
-NCC
-Freddy
 
+Freddy Wetjen at the National Library of Norway has been of tremendous help in generating the original NCC corpus, and has also contributed to generate the collated coprus used for this training. In addition he has been a dicussion partner in the creating of these models. 
 
+Also thanks to Stefan XXXX for writing the script used for converting these models from T5X to HuggingFace and to Javer de la Rosa for writing the dataloader for reading the HuggingFace Datasets in T5.
+
+## Warranty
+Use at your own risk. The models have not yet been thougroughly tested, and may contain both errors and biases.
+
+## Contact/About
+These models were trained by Per E Kummervold. Please contact me on per@capia.no.
