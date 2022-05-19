@@ -57,7 +57,7 @@ I will continue to train and release additional models to this set. What models 
 ## Thanks
 This release would not have been possible without getting support from [TPU Research Cloud](https://sites.research.google/trc/about/) at Google Research. 
 
-Freddy Wetjen at the National Library of Norway has been of tremendous help in generating the original NCC corpus, and has also contributed to generate the collated coprus used for this training. In addition he has been a dicussion partner in the creating of these models. 
+Freddy Wetjen at the National Library of Norway has been of tremendous help in generating the original NCC corpus, and has also contributed to generate the collated coprus used for this training. In addition he has been a dicussion partner in the creation of these models. 
 
 Also thanks to Stefan XXXX for writing the script used for converting these models from T5X to HuggingFace and to Javer de la Rosa for writing the dataloader for reading the HuggingFace Datasets in T5.
 
