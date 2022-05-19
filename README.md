@@ -12,7 +12,7 @@ The North-T5 is a set of Norwegian sequence-to-sequence-models. It builds upon t
 |North-T5-xxl|11 billion| N/A | GCloud Bucket |
 
 ## Performance
-A thorough evaluation of the North-T5 models is planned. I strongly recommend any external researchers to make their own evaluation. The main advantage with the T5-models are their flexibility, and that they can be adapted to nearly any task. Traditionally, encoder-only models (like BERT) excels in classification tasks, while seq-2-seq models are easier to train for tasks like translation and Q&A. Despite this, here are the results from using North-T5 on the political classification task explained in REF. 
+A thorough evaluation of the North-T5 models is planned. I strongly recommend any external researchers to make their own evaluation. The main advantage with the T5-models are their flexibility, and that they can be adapted to nearly any task. Traditionally, encoder-only models (like BERT) excels in classification tasks, while seq-2-seq models are easier to train for tasks like translation and Q&A. Despite this, here are the results from using North-T5 on the political classification task explained [here](https://arxiv.org/abs/2104.09617). 
 
 |**Model:** | **F1** |
 |:-----------|:------------|
@@ -34,7 +34,7 @@ For making it easier to run experiments on the T5-models, a range of sub-version
 |**Model:** | **Description** |
 |:-----------|:------------|
 |North-T5-base-LM |Pretrained for an addtional 100k steps on the LM objective described in Raffel & al. In a way this turns a masked language model into an autoregressive model. It also prepares the model for some tasks. When for instance  doing translation and NLI, it is well documented that there is a clear benefit to do a step of unsupervised LM-training before starting the finetuning.| 
-|North-byT5-base | A vocabulary free version of T5. Trained exactly like North-T5, but instead of the 200.000 vocabulary, this model ..... This model might be of particulary interest for tasks involving for instance spelling correction, OCR-cleaning, handwriting recognition etc. However, it will, by design, have a shorter maximum sequence length.|
+|North-byT5-base | A vocabulary free version of T5. Trained exactly like North-T5, but instead of the 200.000 vocabulary, this model operates directly on the raw text. The model architecture might be of particulary interest for tasks involving for instance spelling correction, OCR-cleaning, handwriting recognition etc. However, it will, by design, have a shorter maximum sequence length.|
 |North-T5-base-modern | Pretrained for an additional 200k steps on a blanaced Bokmål and Nynorsk corpus. While original made for doing translation between Bokmål and Nynorsk, it might also give improved results on tasks where you know that the input/output is modern "standard" text. A significant part of the training corpus is newspapers and reports.|
 |North-T5-base-scandinavian |Pretrained for an additional 200k steps on a corpus with the Scandinavian languages (Bokmål, Nynorsk, Danish, Swedish and Icelandic (+ a tiny bit Faeroyish)). The model was trained for increasing the understanding of what effect such training has on various languages.|
 
