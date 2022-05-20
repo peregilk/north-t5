@@ -8,8 +8,9 @@ def convert_pytorch_and_vocab(flax_dump_folder_path):
     shutil.copyfile('spiece.model',flax_dump_folder_path+'spiece.model')
     shutil.copyfile('special_tokens_map.json',flax_dump_folder_path+'special_tokens_map.json')
     shutil.copyfile('tokenizer_config.json',flax_dump_folder_path+'tokenizer_config.json')
+    shutil.copyfile('.gitattributes',flax_dump_folder_path+'.gitattributes')
 
-    print("Copied tokenizer files")
+    print("Copied tokenizer files and a gitattributes file")
 
     config= T5Config.from_pretrained(flax_dump_folder_path+'config.json')
     model = T5ForConditionalGeneration(config=config)
