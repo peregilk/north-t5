@@ -6,21 +6,47 @@ from copy_additional_files_from_bucket import copy_additional_files_from_bucket 
 from huggingface_hub import HfApi, Repository
 
 api = HfApi()
-paths = t5paths.t5paths()
+temp_paths = t5paths.t5paths()
 model_local_dir = "/home/perk/models/"
+forceConvert=False
+forceTFPT=False
+forceFiles=False
+
 
 #For debugging - working on the first one
-paths = paths[1:2]
+#paths = paths[1:2]
+
+paths = []
+
+for m in temp_paths:
+    if "small" in m['name'] and "byt5" not in m['name']:
+        paths.append(m)
+        print(m['name'])
 
 for m in paths:
     repo = Repository(local_dir=model_local_dir+m['name'])
     repo.git_pull()
-	# print(f"***Starting to convert {m['name']}")
-	# convert_t5x(m['checkpoint'],m['size']+'.json',model_local_dir+m['name'])
-	# print(f"***Starting to convert to pyTorch")
-	#create_transformers(model_local_dir+m['name'],m['size'])
-    copy_adf(m['path'],model_local_dir+m['name'])
-    print("***Copied additional files from the bucket")
+    if forceConvert or not os.path.exists(model_local_dir+m['name']+"/flax_model.msgpack"):
+        print(f"***Starting to convert {m['name']}")
+        convert_t5x(m['checkpoint'],m['size']+'.json',model_local_dir+m['name'])
+    else:
+        print("***Dropping conversion")
+
+
+    if forceTFPT or not os.path.exists(model_local_dir+m['name']+"/pytorch_model.bin"):
+        print(f"***Starting to convert to pyTorch and tensorflow")
+        create_transformers(model_local_dir+m['name'],m['size'])
+   
+    else:
+        print("***Dropping PyTorch and Tensorflow")
+
+
+    if forceFiles or not os.path.exists(model_local_dir+m['name']+"/config.gin"):
+        print("***Starting to copy additional files from the bucket")
+        copy_adf(m['path'],model_local_dir+m['name'])
+    else:
+        print("***Dropping to copy files")
+
+    print("***Starting to push  all the files to the hub")
     repo.push_to_hub(commit_message="Commit from model create scripts")
-    print("***Successfully pushed all files to the hub")
 

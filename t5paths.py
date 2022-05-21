@@ -14,7 +14,7 @@ def t5paths(size="all"):
             else:
                 private = True
 
-            n = "mt5_"+s+"_NCC"
+            n = "byt5_"+s+"_NCC"
             p = "gs://north-t5x/pretrained_models/"+s+"/norwegian_NCC_plus_English_byt5x_"+s+"/"
             c = p+"checkpoint_1500000"
             if s!="xl" and s!="xxl":
