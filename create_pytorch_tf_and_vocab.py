@@ -3,7 +3,7 @@ import shutil
 import argparse
 
 
-def create_pytorch_and_vocab(flax_dump_folder_path, model_size):
+def create_pytorch_tf_and_vocab(flax_dump_folder_path, model_size):
 
     shutil.copyfile('spiece.model',flax_dump_folder_path+'/spiece.model')
     shutil.copyfile('special_tokens_map.json',flax_dump_folder_path+'/special_tokens_map.json')
@@ -38,4 +38,4 @@ if __name__ == "__main__":
         "--model_size", default="base", type=str, required=True, help="Model size. Used for finding the correct config file."
     )
     args = parser.parse_args()
-    create_pytorch_and_vocab(args.flax_dump_folder_path)
+    create_pytorch_tf_and_vocab(args.flax_dump_folder_path)
