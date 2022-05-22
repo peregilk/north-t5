@@ -39,7 +39,7 @@ def t5paths(size="all"):
             
             n = "t5_"+s+"_NCC_modern"
             p = "gs://north-t5x/pretrained_models/"+s+"/norwegian_NCC_plus_English_pluss200k_balanced_bokmaal_nynorsk_t5x_"+s+"/"
-            c = p+"checkpoint_1600000"
+            c = p+"checkpoint_1700000"
             if s!="xxl":
                 paths.append({"name":n,"path":p,"checkpoint":c,"private":private,"size":s})
             

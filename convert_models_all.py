@@ -19,7 +19,7 @@ forceFiles=False
 paths = []
 
 for m in temp_paths:
-    if "small" in m['name'] and "byt5" not in m['name']:
+    if "xxl" in m['name'] and "byt5" not in m['name']:
         paths.append(m)
         print(m['name'])
 
