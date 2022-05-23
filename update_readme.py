@@ -10,7 +10,7 @@ model_local_dir = "/home/perk/models/"
 
 
 #Debug
-paths = paths[1:2]
+#paths = paths[1:2]
 
 
 
@@ -21,10 +21,9 @@ for m in paths:
 
     #Read the README template
     txt = Path('templates/README.md').read_text()
-    
 
     #Modify the README
-    txt = txt.replace("e","x")
+    #txt = txt.replace("e","x")
 
     #Save the REAME
     with open(local_dir+"/README.md", 'w+') as f: 

@@ -9,10 +9,10 @@ def t5paths(size="all"):
     paths = []
     for s in sizes:
         if s==size or size=="all":
-            if size == "base":
-                private = False
-            else:
-                private = True
+            #if size == "base":
+            #    private = False
+            #else:
+            private = True
 
             n = "byt5_"+s+"_NCC"
             p = "gs://north-t5x/pretrained_models/"+s+"/norwegian_NCC_plus_English_byt5x_"+s+"/"
@@ -29,7 +29,7 @@ def t5paths(size="all"):
             n = "t5_"+s+"_NCC_lm"
             p = "gs://north-t5x/pretrained_models/"+s+"/norwegian_NCC_plus_English_pluss100k_lm_t5x_"+s+"/"
             c = p+"checkpoint_1600000"
-            paths.append({"name":n,"path":p,"checkpoint":c,"private":private,"size":s})
+            paths.append({"name":n,"path":p,"checkpoint":c,"private":False,"size":s})
             
             n = "t5_"+s+"_NCC_modern_lm"
             p = "gs://north-t5x/pretrained_models/"+s+"/norwegian_NCC_plus_English_pluss200k_balanced_bokmaal_nynorsk_pluss100k_lm_t5x_"+s+"/"
@@ -49,12 +49,41 @@ def t5paths(size="all"):
             if s!="xxl":
                 paths.append({"name":n,"path":p,"checkpoint":c,"private":private,"size":s})
             
-            private = False
             n = "t5_"+s+"_NCC"
             p = "gs://north-t5x/pretrained_models/"+s+"/norwegian_NCC_plus_English_t5x_"+s+"/"
             c = p+"checkpoint_1500000"
-            paths.append({"name":n,"path":p,"checkpoint":c,"private":private,"size":s})
+            paths.append({"name":n,"path":p,"checkpoint":c,"private":False,"size":s})
 
     return paths
+
+def create_index_table(target):
+    for m in t5paths():
+        mdict[m['name']] ={"size":m['size'], 'path': m['path'], 'private': m['private']}
+
+    show_private = mdict[target]['private']
+
+    sizes=['small','base','large','xl','xxl']
+    types=['t5_##_NCC','t5_##_NCC_lm','t5_##_NCC_modern','t5_##_NCC_modern_lm','t5_##_NCC_scand','t5_##_scand','byt5_##_NCC']
+    table="| |**Small**|**Base**|**Large**|**XL**|**XXL**|\n|:-----------|:------------|:------------|:------------|:------------|:------------|\n"
+
+    for t in types:
+        row = "|"
+        for s in sizes:
+            model = mdict.get(t.replace('##',s))
+            if model:
+                if model['private'] == False or show_private == True:
+                    if mdict.get(t.replace('##',s)) == target:
+                        row += "this|"
+                    else:
+                        row+='[🤗](https://huggingface.co/north/'+t+')|'
+            else:
+                row+="-"
+
+        if row.replace("|","").replace("-","") != "":
+            table+="|"+t.replace("_##","")+row+"|\n"
+   
+    bucket = "\n### T5X Checkpoint\nThe original T5X checkpoint is also available for this model in the [Google Cloud Bucket]{"+mdict[target]['path']+")\n"
+
+    return table + bucket
 
 
