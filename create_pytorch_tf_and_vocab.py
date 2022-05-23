@@ -1,4 +1,4 @@
-from transformers import TFT5ForConditionalGeneration, T5ForConditionalGeneration, T5Config, AutoTokenizer
+from transformers import FlaxT5ForConditionalGeneration,TFT5ForConditionalGeneration, T5ForConditionalGeneration, T5Config, AutoTokenizer
 import shutil
 import argparse
 
@@ -12,14 +12,19 @@ def create_pytorch_tf_and_vocab(flax_dump_folder_path, model_size):
 
     print("Copied tokenizer files and a gitattributes file")
     config= T5Config.from_pretrained(model_size+'.json')
-    model = T5ForConditionalGeneration(config=config)
+    
+    #For the huge models, we will also open and save the Flax file
+    #if model_size = "xl" or model_size="xxl":
+    model = T5ForConditionalGeneration.from_pretrained(flax_dump_folder_path,config=config,from_flax=True)
     model.save_pretrained(flax_dump_folder_path)
 
+
+    model = T5ForConditionalGeneration.from_pretrained(flax_dump_folder_path,config=config,from_flax=True)
+    model.save_pretrained(flax_dump_folder_path)
     print("Saved PyTorch-model")
 
-    model = TFT5ForConditionalGeneration(config=config)
+    model = TFT5ForConditionalGeneration.from_pretrained(flax_dump_folder_path,config=config, from_pt=True)
     model.save_pretrained(flax_dump_folder_path)
-
     print("Saved Tensorflow-model")
 
     tokenizer = AutoTokenizer.from_pretrained(flax_dump_folder_path)
