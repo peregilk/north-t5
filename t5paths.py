@@ -57,6 +57,9 @@ def t5paths(size="all"):
     return paths
 
 def create_index_table(target):
+    mdict = dict()
+    model = dict()
+    
     for m in t5paths():
         mdict[m['name']] ={"size":m['size'], 'path': m['path'], 'private': m['private']}
 
@@ -64,7 +67,7 @@ def create_index_table(target):
 
     sizes=['small','base','large','xl','xxl']
     types=['t5_##_NCC','t5_##_NCC_lm','t5_##_NCC_modern','t5_##_NCC_modern_lm','t5_##_NCC_scand','t5_##_scand','byt5_##_NCC']
-    table="| |**Small**|**Base**|**Large**|**XL**|**XXL**|\n|:-----------|:------------|:------------|:------------|:------------|:------------|\n"
+    table="| |**Small** <br />_60M_|**Base** <br />_220M_|**Large** <br />_770M_|**XL** <br />_3B_|**XXL** <br />_11B_|\n|:-----------|:------------:|:------------:|:------------:|:------------:|:------------:|\n"
 
     for t in types:
         row = "|"
@@ -72,17 +75,18 @@ def create_index_table(target):
             model = mdict.get(t.replace('##',s))
             if model:
                 if model['private'] == False or show_private == True:
-                    if mdict.get(t.replace('##',s)) == target:
-                        row += "this|"
+
+                    if t.replace('##',s) == target:
+                        row += "✔|"
                     else:
-                        row+='[🤗](https://huggingface.co/north/'+t+')|'
+                        row+='[🤗](https://huggingface.co/north/'+t.replace('##',s)+')|'
             else:
-                row+="-"
+                row+" ❌|"
 
         if row.replace("|","").replace("-","") != "":
-            table+="|"+t.replace("_##","")+row+"|\n"
+            table+="|"+t.replace("_##","").replace("t5","North-T5").replace("_","&#8209;")+row+"|\n"
    
-    bucket = "\n### T5X Checkpoint\nThe original T5X checkpoint is also available for this model in the [Google Cloud Bucket]{"+mdict[target]['path']+")\n"
+    bucket = "\n## T5X Checkpoint\nThe original T5X checkpoint is also available for this model in the [Google Cloud Bucket]("+mdict[target]['path']+").\n"
 
     return table + bucket
 

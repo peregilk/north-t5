@@ -21,10 +21,15 @@ for m in paths:
 
     #Read the README template
     txt = Path('templates/README.md').read_text()
-
+    priv_desc = Path('templates/PRIV-DESC.md').read_text()
+    
     #Modify the README
-    #txt = txt.replace("e","x")
-
+    txt = txt.replace("##MODELS##",t5paths.create_index_table(m['name']))
+    if m['private'] == True:
+        txt = txt.replace("##PRIV-DESC##",priv_desc)
+    else:
+        txt = txt.replace("##PRIV-DESC##","")
+    
     #Save the REAME
     with open(local_dir+"/README.md", 'w+') as f: 
         f.write(txt)

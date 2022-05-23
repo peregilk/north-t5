@@ -1,17 +1,24 @@
+---
+language: 
+- no
+- nn
+- sv
+- dk
+- is
+- en
+
+datasets:
+- nbailab/NCC
+- mc4
+- wikipedia
+
+license: apache-2.0
+---
+
 # North-T5
 The North-T5 is a set of Norwegian sequence-to-sequence-models. It builds upon the flexible T5 text-to-text platform and can be used for a variety of NLP tasks ranging from classification to translation.
 
 ##MODELS##
-
-
-## Main versions - download
-|**Model:** | **Parameters** |**Transformers** |**T5X** |
-|:-----------|:------------|:------------|:------------|
-|North-T5-small|60 million | HuggingFace | GCloud Bucket |
-|North-T5-base|220 million | HuggingFace | GCloud Bucket |
-|North-T5-large|770 million | HuggingFace | GCloud Bucket |
-|North-T5-xl|3 billion | HuggingFace | GCloud Bucket |
-|North-T5-xxl|11 billion| N/A | GCloud Bucket |
 
 ## Performance
 A thorough evaluation of the North-T5 models is planned. I strongly recommend any external researchers to make their own evaluation. The main advantage with the T5-models are their flexibility. Traditionally, encoder-only models (like BERT) excels in classification tasks, while seq-2-seq models are easier to train for tasks like translation and Q&A. Despite this, here are the results from using North-T5 on the political classification task explained [here](https://arxiv.org/abs/2104.09617). 
@@ -30,15 +37,14 @@ A thorough evaluation of the North-T5 models is planned. I strongly recommend an
 
 This is preliminary results. The [results](https://arxiv.org/abs/2104.09617) from the BERT-models are based on the test-results from the best model after 10 runs with early stopping and a decaying learning rate. The T5-results are the average of five runs on the evaluation set. The small-model was trained for 10.000 steps, while the rest for 5.000 steps. A fixed learning rate was used (no decay), and no early stopping. Neither was the recommended rank classification used. We use a max sequence length of 512. This method simplifies the test setup and gives results that are easy to interpret. However, the results from the T5 model might actually be a bit sub-optimal.  
 
-## Sub-versions of North-T5-Base
-For making it possible to run experiments on the T5-models, a range of sub-versions are released. These models are currently only available as base-models. However, other model sizes can be made available by request.
+## Sub-versions of North-T5
+The following sub-versions are available. Other versions will be available shorter.
 
-|**Model:** | **Description** |
-|:-----------|:------------|
-|North-T5-base-LM |Pretrained for an addtional 100k steps on the LM objective described in Raffel & al. In a way this turns a masked language model into an autoregressive model. It also prepares the model for some tasks. When for instance  doing translation and NLI, it is well documented that there is a clear benefit to do a step of unsupervised LM-training before starting the finetuning.| 
-|North-byT5-base | A vocabulary free version of T5. Trained exactly like North-T5, but instead of the 200.000 vocabulary, this model operates directly on the raw text. The model architecture might be of particulary interest for tasks involving for instance spelling correction, OCR-cleaning, handwriting recognition etc. However, it will, by design, have a shorter maximum sequence length.|
-|North-T5-base-modern | Pretrained for an additional 200k steps on a blanaced Bokmål and Nynorsk corpus. While original made for doing translation between Bokmål and Nynorsk, it might also give improved results on tasks where you know that the input/output is modern "standard" text. A significant part of the training corpus is newspapers and reports.|
-|North-T5-base-scandinavian |Pretrained for an additional 200k steps on a corpus with the Scandinavian languages (Bokmål, Nynorsk, Danish, Swedish and Icelandic (+ a tiny bit Faeroyish)). The model was trained for increasing the understanding of what effect such training has on various languages.|
+|**Model** | **Description** |
+|:-----------|:-------|
+|**North&#8209;T5&#8209;NCC** |This is the main version. It is trained an additonal 500.000 steps on from the mT5 checkpoint. The training corpus is based on [the Norwegian Colossal Corpus (NCC)](https://huggingface.co/datasets/NbAiLab/NCC). In addition there are added data from MC4 and English Wikipedia.| 
+|**North&#8209;T5&#8209;NCC&#8209;lm**|Pretrained for an addtional 100k steps on the LM objective discussed in the [T5 paper](https://arxiv.org/pdf/1910.10683.pdf). In a way this turns a masked language model into an autoregressive model. It also prepares the model for some tasks. When for instance  doing translation and NLI, it is well documented that there is a clear benefit to do a step of unsupervised LM-training before starting the finetuning.| 
+##PRIV-DESC##
 
 ## Fine-tuned versions
 As explained below, the model really needs to be fine-tuned for specific tasks. This procedure is simple, and the model is not very sensitive to the hyper-parameters used. Usually a decent result can be obtained by using a fixed learning rate of 1e-3. Smaller versions of the model typically needs to be trained for a longer time. It is easy to train the base-models in a Google Colab. I will provide an exampel Notebook on this soon.
