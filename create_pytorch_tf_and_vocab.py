@@ -13,19 +13,17 @@ def create_pytorch_tf_and_vocab(flax_dump_folder_path, model_size):
     print("Copied tokenizer files and a gitattributes file")
     config= T5Config.from_pretrained(model_size+'.json')
    
-    low_cpu_mem_usage = False
     #For the huge models, we will also open and save the Flax file
-    if model_size = "xl" or model_size="xxl":
-        low_cpu_mem_usage = True
-        model = T5ForConditionalGeneration.from_pretrained(flax_dump_folder_path,config=config,from_flax=True,low_cpu_mem_usage=low_cpu_mem_usage)
+    if model_size == "xl" or model_size=="xxl":
+        model = T5ForConditionalGeneration.from_pretrained(flax_dump_folder_path,config=config,from_flax=True)
         model.save_pretrained(flax_dump_folder_path)
         
 
-    model = T5ForConditionalGeneration.from_pretrained(flax_dump_folder_path,config=config,from_flax=True,low_cpu_mem_usage=low_cpu_mem_usage)
+    model = T5ForConditionalGeneration.from_pretrained(flax_dump_folder_path,config=config,from_flax=True)
     model.save_pretrained(flax_dump_folder_path)
     print("Saved PyTorch-model")
 
-    model = TFT5ForConditionalGeneration.from_pretrained(flax_dump_folder_path,config=config, from_pt=Truei,low_cpu_mem_usage=low_cpu_mem_usage)
+    model = TFT5ForConditionalGeneration.from_pretrained(flax_dump_folder_path,config=config, from_pt=True)
     model.save_pretrained(flax_dump_folder_path)
     print("Saved Tensorflow-model")
 

@@ -8,24 +8,23 @@ from huggingface_hub import HfApi, Repository
 api = HfApi()
 temp_paths = t5paths.t5paths()
 model_local_dir = "/home/perk/models/"
-forceConvert=True
+forceConvert=False
 forceTFPT=True
 forceFiles=False
 
 #For debugging - working on the first one
-temp_paths = temp_paths[1:2]
-print(temp_paths)
+#temp_paths = temp_paths[1:2]
+#print(temp_paths)
 
 paths = []
 for m in temp_paths:
-    #if "small" in m['name'] and "byt5" not in m['name'] and "modern_lm" not in m['name']:
-    if "small" in m['name'] and "byt5" not in m['name']:
+    #if ("small" in m['name'] or "base" in m['name']) and "byt5" not in m['name']:
+    if "_xl_" in m['name'] and "byt5" not in m['name'] and "modern_lm" not in m['name']:
         paths.append(m)
         print(m['name'])
 
 
 for m in paths:
-    print("I am here...")
     repo = Repository(local_dir=model_local_dir+m['name'])
     repo.git_pull()
     if forceConvert or not os.path.exists(model_local_dir+m['name']+"/flax_model.msgpack"):
