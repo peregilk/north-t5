@@ -4,14 +4,13 @@ import argparse
 
 
 def create_pytorch_tf_and_vocab(flax_dump_folder_path, model_size):
-
     shutil.copyfile('spiece.model',flax_dump_folder_path+'/spiece.model')
     shutil.copyfile('special_tokens_map.json',flax_dump_folder_path+'/special_tokens_map.json')
     shutil.copyfile('tokenizer_config.json',flax_dump_folder_path+'/tokenizer_config.json')
     shutil.copyfile('.gitattributes',flax_dump_folder_path+'/.gitattributes')
 
     print("Copied tokenizer files and a gitattributes file")
-    config= T5Config.from_pretrained(model_size+'.json')
+    config= T5Config.from_pretrained(flax_dump_folder_path+'config.json')
    
     #For the huge models, we will also open and save the Flax file
     if model_size == "xl" or model_size=="xxl":
@@ -27,11 +26,13 @@ def create_pytorch_tf_and_vocab(flax_dump_folder_path, model_size):
     model.save_pretrained(flax_dump_folder_path)
     print("Saved Tensorflow-model")
 
-    tokenizer = AutoTokenizer.from_pretrained(flax_dump_folder_path)
-    tokenizer.save_pretrained(flax_dump_folder_path)
+    try:    
+        tokenizer = AutoTokenizer.from_pretrained(flax_dump_folder_path)
+        tokenizer.save_pretrained(flax_dump_folder_path)
 
-    print("Saved tokenizer")
-
+        print("Saved tokenizer")
+    except:
+        print("No tokenizer generated. If this is a byT5 model, this is expected")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
