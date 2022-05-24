@@ -31,10 +31,10 @@ for m in paths:
     if forceConvert or not os.path.exists(model_local_dir+m['name']+"/flax_model.msgpack"):
         print(f"***Starting to convert {m['name']}")
         if "byt5" not in m['name']:
-            shutil.copyfile(m['size']+'.json',model_local_dir+m['name']+'config.json')
+            shutil.copyfile(m['size']+'.json',model_local_dir+m['name']+'/config.json')
             convert_t5x(m['checkpoint'],m['size']+'.json',model_local_dir+m['name'])
         else:
-            shutil.copyfile("byt5_"+m['size']+'.json',model_local_dir+m['name']+'config.json')
+            shutil.copyfile("byt5_"+m['size']+'.json',model_local_dir+m['name']+'/config.json')
             convert_t5x(m['checkpoint'],"byt5_"+m['size']+'.json',model_local_dir+m['name'])
     else:
         print("***Dropping conversion")
