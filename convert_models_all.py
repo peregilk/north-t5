@@ -11,7 +11,7 @@ temp_paths = t5paths.t5paths()
 model_local_dir = "/home/perk/models/"
 forceConvert=True
 forceTFPT=True
-forceFiles=False
+forceFiles=True
 
 #For debugging - working on the first one
 #temp_paths = temp_paths[1:2]
@@ -19,8 +19,8 @@ forceFiles=False
 
 paths = []
 for m in temp_paths:
-    #if "base" in m['name'] and "byt5" in m['name']:
-    if "_xxl_" not in m['name'] and "small" not in m['name'] and "base" not in m['name'] and "large_NCC_modern_lm" not in m['name']:
+    if "xxl" in m['name']:
+    #if "_xxl_" not in m['name'] and "small" not in m['name'] and "base" not in m['name'] and "large_NCC_modern_lm" not in m['name']:
         paths.append(m)
         print(m['name'])
 
