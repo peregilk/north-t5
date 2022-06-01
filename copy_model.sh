@@ -1,4 +1,4 @@
-SIZE="xl"
+SIZE="large"
 
 SOURCE_BUCKET="t5x-backup"
 TARGET_BUCKET="north-t5x"

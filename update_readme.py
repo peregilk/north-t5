@@ -27,6 +27,7 @@ for m in paths:
     txt = txt.replace("##MODELS##",t5paths.create_index_table(m['name']))
     if m['private'] == True:
         txt = txt.replace("##PRIV-DESC##",priv_desc)
+        txt = txt.replace("apache-2.0","other")
     else:
         txt = txt.replace("##PRIV-DESC##","")
     

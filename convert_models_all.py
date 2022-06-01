@@ -19,8 +19,8 @@ forceFiles=True
 
 paths = []
 for m in temp_paths:
-    if "xxl" in m['name']:
-    #if "_xxl_" not in m['name'] and "small" not in m['name'] and "base" not in m['name'] and "large_NCC_modern_lm" not in m['name']:
+    #if "xxl" in m['name']:
+    if "large_NCC_modern_lm" in m['name']:
         paths.append(m)
         print(m['name'])
 

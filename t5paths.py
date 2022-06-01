@@ -84,7 +84,7 @@ def create_index_table(target):
                 row+" ❌|"
 
         if row.replace("|","").replace("-","") != "":
-            table+="|"+t.replace("_##","").replace("t5","North-T5").replace("_","&#8209;")+row+"|\n"
+            table+="|"+t.replace("_##","").replace("byt5","North-byT5").replace("t5","North-T5").replace("_","&#8209;")+row+"|\n"
    
     bucket = "\n## T5X Checkpoint\nThe original T5X checkpoint is also available for this model in the [Google Cloud Bucket]("+mdict[target]['path']+").\n"
 
