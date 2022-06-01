@@ -13,14 +13,23 @@ forceConvert=True
 forceTFPT=True
 forceFiles=True
 
+# Converts a single finetuned model
+#temp_paths = [{'name': 'demo-nynorsk-base', 'path': 'gs://north-t5x/finetuned/bokmaal_nynorsk/nynorsk_balanced_base_v1/', 'checkpoint': 'gs://north-t5x/finetuned/bokmaal_nynorsk/nynorsk_balanced_base_v1/checkpoint_1703000', 'private': True, 'size': 'base'}]
+temp_paths = [{'name': 'demo-deuncaser-base', 'path': 'gs://north-t5x/finetuned/deuncaser/deuncaser_base_v1/', 'checkpoint': 'gs://north-t5x/finetuned/deuncaser/deuncaser_base_v1/checkpoint_1750000', 'private': True, 'size': 'base'}]
+
 #For debugging - working on the first one
 #temp_paths = temp_paths[1:2]
 #print(temp_paths)
 
 paths = []
 for m in temp_paths:
+<<<<<<< HEAD
     #if "xxl" in m['name']:
     if "large_NCC_modern_lm" in m['name']:
+=======
+    if "xxl" not in m['name']:
+    #if "_xxl_" not in m['name'] and "small" not in m['name'] and "base" not in m['name'] and "large_NCC_modern_lm" not in m['name']:
+>>>>>>> ddedc35fe4413dabc6c77ba8ffb5691f45d1b695
         paths.append(m)
         print(m['name'])
 
