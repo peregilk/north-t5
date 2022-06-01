@@ -14,7 +14,8 @@ forceTFPT=True
 forceFiles=True
 
 # Converts a single finetuned model
-temp_paths = [{'name': 'demo-nynorsk-base', 'path': 'gs://north-t5x/finetuned/bokmaal_nynorsk/nynorsk_balanced_base_v1/', 'checkpoint': 'gs://north-t5x/finetuned/bokmaal_nynorsk/nynorsk_balanced_base_v1/checkpoint_1703000', 'private': True, 'size': 'base'}]
+#temp_paths = [{'name': 'demo-nynorsk-base', 'path': 'gs://north-t5x/finetuned/bokmaal_nynorsk/nynorsk_balanced_base_v1/', 'checkpoint': 'gs://north-t5x/finetuned/bokmaal_nynorsk/nynorsk_balanced_base_v1/checkpoint_1703000', 'private': True, 'size': 'base'}]
+temp_paths = [{'name': 'demo-deuncaser-base', 'path': 'gs://north-t5x/finetuned/deuncaser/deuncaser_base_v1/', 'checkpoint': 'gs://north-t5x/finetuned/deuncaser/deuncaser_base_v1/checkpoint_1750000', 'private': True, 'size': 'base'}]
 
 #For debugging - working on the first one
 #temp_paths = temp_paths[1:2]
