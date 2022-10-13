@@ -16,9 +16,9 @@ forceFiles=True
 # Converts a single finetuned model
 #temp_paths = [{'name': 'demo-nynorsk-base', 'path': 'gs://north-t5x/finetuned/bokmaal_nynorsk/nynorsk_balanced_base_v1/', 'checkpoint': 'gs://north-t5x/finetuned/bokmaal_nynorsk/nynorsk_balanced_base_v1/checkpoint_1703000', 'private': True, 'size': 'base'}]
 #temp_paths = [{'name': 'demo-deuncaser-base', 'path': 'gs://north-t5x/finetuned/deuncaser/deuncaser_base_v1/', 'checkpoint': 'gs://north-t5x/finetuned/deuncaser/deuncaser_base_v1/checkpoint_1750000', 'private': True, 'size': 'base'}]
-temp_paths = [{'name': 't5_base_scand2', 'path': 'gs://nb-t5x-us-central2/scandinavian3k_solo_t5x_base/', 'checkpoint': 'gs://nb-t5x-us-central2/scandinavian3k_solo_t5x_base/checkpoint_3000000', 'private': True, 'size': 'base'}]
-#temp_paths = [{'name': 't5_large_scand2', 'path': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_large/', 'checkpoint': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_large/checkpoint_3000000', 'private': True, 'size': 'base'}]
-#temp_paths = [{'name': 't5_large_scand2', 'path': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_xl/', 'checkpoint': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_xl/checkpoint_3000000', 'private': True, 'size': 'base'}]
+#temp_paths = [{'name': 't5_base_scand3M', 'path': 'gs://nb-t5x-us-central2/scandinavian3k_solo_t5x_base/', 'checkpoint': 'gs://nb-t5x-us-central2/scandinavian3k_solo_t5x_base/checkpoint_3000000', 'private': True, 'size': 'base'}]
+temp_paths = [{'name': 't5_large_scand3M', 'path': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_large/', 'checkpoint': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_large/checkpoint_3000000', 'private': True, 'size': 'large'}]
+#temp_paths = [{'name': 't5_xl_scand3M', 'path': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_xl/', 'checkpoint': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_xl/checkpoint_3000000', 'private': True, 'size': 'xl'}]
 
 #For debugging - working on the first one
 #temp_paths = temp_paths[1:2]
