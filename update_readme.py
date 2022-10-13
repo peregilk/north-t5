@@ -12,10 +12,9 @@ model_local_dir = "/home/perk/models/"
 #Debug
 #paths = paths[1:2]
 
-
-
 for m in paths:
     local_dir = model_local_dir+m['name']
+    print(local_dir)
     repo = Repository(local_dir=local_dir)
     repo.git_pull()
 
