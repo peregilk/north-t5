@@ -15,7 +15,10 @@ forceFiles=True
 
 # Converts a single finetuned model
 #temp_paths = [{'name': 'demo-nynorsk-base', 'path': 'gs://north-t5x/finetuned/bokmaal_nynorsk/nynorsk_balanced_base_v1/', 'checkpoint': 'gs://north-t5x/finetuned/bokmaal_nynorsk/nynorsk_balanced_base_v1/checkpoint_1703000', 'private': True, 'size': 'base'}]
-temp_paths = [{'name': 'demo-deuncaser-base', 'path': 'gs://north-t5x/finetuned/deuncaser/deuncaser_base_v1/', 'checkpoint': 'gs://north-t5x/finetuned/deuncaser/deuncaser_base_v1/checkpoint_1750000', 'private': True, 'size': 'base'}]
+#temp_paths = [{'name': 'demo-deuncaser-base', 'path': 'gs://north-t5x/finetuned/deuncaser/deuncaser_base_v1/', 'checkpoint': 'gs://north-t5x/finetuned/deuncaser/deuncaser_base_v1/checkpoint_1750000', 'private': True, 'size': 'base'}]
+temp_paths = [{'name': 't5_base_scand2', 'path': 'gs://nb-t5x-us-central2/scandinavian3k_solo_t5x_base/', 'checkpoint': 'gs://nb-t5x-us-central2/scandinavian3k_solo_t5x_base/checkpoint_3000000', 'private': True, 'size': 'base'}]
+#temp_paths = [{'name': 't5_large_scand2', 'path': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_large/', 'checkpoint': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_large/checkpoint_3000000', 'private': True, 'size': 'base'}]
+#temp_paths = [{'name': 't5_large_scand2', 'path': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_xl/', 'checkpoint': 'gs://nb-t5x-us-central2/scandinavian3k_t5x_xl/checkpoint_3000000', 'private': True, 'size': 'base'}]
 
 #For debugging - working on the first one
 #temp_paths = temp_paths[1:2]
@@ -23,17 +26,12 @@ temp_paths = [{'name': 'demo-deuncaser-base', 'path': 'gs://north-t5x/finetuned/
 
 paths = []
 for m in temp_paths:
-<<<<<<< HEAD
-    #if "xxl" in m['name']:
-    if "large_NCC_modern_lm" in m['name']:
-=======
     if "xxl" not in m['name']:
-    #if "_xxl_" not in m['name'] and "small" not in m['name'] and "base" not in m['name'] and "large_NCC_modern_lm" not in m['name']:
->>>>>>> ddedc35fe4413dabc6c77ba8ffb5691f45d1b695
         paths.append(m)
         print(m['name'])
 
 for m in paths:
+    print(model_local_dir+m['name'])
     repo = Repository(local_dir=model_local_dir+m['name'])
     repo.git_pull()
     

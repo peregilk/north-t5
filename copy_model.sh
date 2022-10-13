@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 SIZE="large"
-=======
-SIZE="small"
->>>>>>> ddedc35fe4413dabc6c77ba8ffb5691f45d1b695
 
 SOURCE_BUCKET="t5x-backup"
 TARGET_BUCKET="north-t5x"
