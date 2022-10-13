@@ -13,8 +13,6 @@ model_local_dir = "/home/perk/models/"
 #paths = paths[1:2]
 
 
-print(paths)
-exit()
 
 for m in paths:
     local_dir = model_local_dir+m['name']

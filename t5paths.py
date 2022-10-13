@@ -52,7 +52,7 @@ def t5paths(size="all"):
             n = "t5_"+s+"_scand3M"
             p = "gs://north-t5x/pretrained_models/"+s+"/scandinavian3k_t5x_"+s+"/"
             c = p+"checkpoint_3000000"
-            if s!="xxl" and s!="small":
+            if s!="xxl" or s!="small":
                 paths.append({"name":n,"path":p,"checkpoint":c,"private":private,"size":s})
             
             n = "t5_"+s+"_NCC"
@@ -72,7 +72,7 @@ def create_index_table(target):
     show_private = mdict[target]['private']
 
     sizes=['small','base','large','xl','xxl']
-    types=['t5_##_NCC','t5_##_NCC_lm','t5_##_NCC_modern','t5_##_NCC_modern_lm','t5_##_NCC_scand','t5_##_scand','byt5_##_NCC']
+    types=['t5_##_NCC','t5_##_NCC_lm','t5_##_NCC_modern','t5_##_NCC_modern_lm','t5_##_NCC_scand','t5_##_scand','byt5_##_NCC','t5_##_scand3M']
     table="| |**Small** <br />_60M_|**Base** <br />_220M_|**Large** <br />_770M_|**XL** <br />_3B_|**XXL** <br />_11B_|\n|:-----------|:------------:|:------------:|:------------:|:------------:|:------------:|\n"
 
     for t in types:
@@ -84,8 +84,12 @@ def create_index_table(target):
 
                     if t.replace('##',s) == target:
                         row += "✔|"
+                    
                     else:
-                        row+='[🤗](https://huggingface.co/north/'+t.replace('##',s)+')|'
+                        if t == "t5_small_scand3M":
+                            row += ' |'
+                        else:
+                            row+='[🤗](https://huggingface.co/north/'+t.replace('##',s)+')|'
             else:
                 row+" ❌|"
 

@@ -20,7 +20,7 @@ widget:
 license: apache-2.0
 ---
 
-The North-T5-models are a set of Norwegian sequence-to-sequence-models. It builds upon the flexible [T5](https://github.com/google-research/text-to-text-transfer-transformer) and [T5X](https://github.com/google-research/t5x) and can be used for a variety of NLP tasks ranging from classification to translation.
+The North-T5-models are a set of Norwegian and Scandinavian sequence-to-sequence-models. It builds upon the flexible [T5](https://github.com/google-research/text-to-text-transfer-transformer) and [T5X](https://github.com/google-research/t5x) and can be used for a variety of NLP tasks ranging from classification to translation.
 
 ##MODELS##
 
