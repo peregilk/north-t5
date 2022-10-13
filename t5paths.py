@@ -86,8 +86,9 @@ def create_index_table(target):
                         row += "✔|"
                     
                     else:
-                        if t.replace('##',s) == "t5_small_scand3M":
-                            row += ' |'
+                        print(t.replace('##',s))
+                        if t.replace('##',s) == "t5_base_scand3M":
+                            row+='| [🤗](https://huggingface.co/north/'+t.replace('##',s)+')|'
                         else:
                             row+='[🤗](https://huggingface.co/north/'+t.replace('##',s)+')|'
             else:
