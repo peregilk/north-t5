@@ -22,5 +22,14 @@
   "relative_attention_num_buckets": 32,
   "tie_word_embeddings": false,
   "tokenizer_class": "T5Tokenizer",
+  "max_length": 512,
+  "task_specific_params": {
+    "text-generation": {
+      "max_length": 512
+    },
+    "translation": {
+      "max_length": 512
+    }
+   },
   "vocab_size": 250112
 }
