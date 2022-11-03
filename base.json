@@ -24,5 +24,13 @@
   "tokenizer_class": "T5Tokenizer",
   "transformers_version": "4.10.0.dev0",
   "use_cache": true,
+  "max_length": 512,
+  "task_specific_params": {
+    "text-generation": {
+      "max_length": 512
+    },
+    "translation": {
+      "max_length": 512   }
+   },
   "vocab_size": 250112
 }
