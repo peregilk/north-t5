@@ -18,12 +18,12 @@
 import argparse
 
 from t5x import checkpoints
-from transformers import FlaxT5ForConditionalGeneration, T5Config
+from transformers import FlaxMT5ForConditionalGeneration, MT5Config
 
 
 def convert_t5x_checkpoint_to_flax(t5x_checkpoint_path, config_name, flax_dump_folder_path):
-    config = T5Config.from_pretrained(config_name)
-    flax_model = FlaxT5ForConditionalGeneration(config=config)
+    config = MT5Config.from_pretrained(config_name)
+    flax_model = FlaxMT5ForConditionalGeneration(config=config)
     t5x_model = checkpoints.load_t5x_checkpoint(t5x_checkpoint_path)
 
     split_mlp_wi = "wi_0" in t5x_model["target"]["encoder"]["layers_0"]["mlp"]
